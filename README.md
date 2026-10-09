@@ -26,9 +26,30 @@ npm run build
 
 Outputs a static site to `build/`.
 
+## Who can see a report: reports.registry.json
+
+A report page is only ever published to the public GitHub Pages site if it's listed here with
+`"visibility": "Public"` or `"Both"`. Any page not listed defaults to `Internal` - nothing goes
+public by accident just because this file wasn't updated.
+
+```json
+{
+  "reports": [
+    { "slug": "finance/overview", "title": "Finance overview", "visibility": "Public" }
+  ]
+}
+```
+
+`slug` is the page's path under `pages/`, without the `.md` extension (e.g. `pages/finance/overview.md`
+-> `finance/overview`). The home page (`pages/index.md`) is always shipped everywhere regardless
+of the registry, since it's not meaningful to hide the site's own root.
+
+Internal-only reports are still fully built and still visible in the internal DataPipelines.Web
+app - the registry only decides what additionally leaves the internal network.
+
 ## Deployment
 
 Building and publishing (both into the internal DataPipelines.Web app and to this repo's
-public `gh-pages` branch for GitHub Pages) is handled entirely by `Deploy.ps1` in the
-DataPipelines repo - there is no CI/CD workflow in this repo. The database is only reachable
-from the deploy box, so the build must run there.
+public `gh-pages` branch for GitHub Pages) is handled entirely by `DataPipelines.Deploy` (a
+console app in the DataPipelines repo) - there is no CI/CD workflow in this repo. The database
+is only reachable from the deploy box, so the build must run there.
