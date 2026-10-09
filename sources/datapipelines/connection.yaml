@@ -1,0 +1,10 @@
+name: datapipelines
+type: postgres
+options:
+  host: localhost
+  port: 5432
+  database: DataPipelines
+  # user/password are never stored here - set as environment variables before running
+  # `evidence sources` / `evidence build` / `evidence dev`:
+  #   EVIDENCE_SOURCE__datapipelines__user
+  #   EVIDENCE_SOURCE__datapipelines__password
