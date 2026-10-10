@@ -1,0 +1,1 @@
+{"queries":[{"id":"orders_by_day","compiledQueryString":"select\n  date_trunc('day', created_at) as day,\n  count(*) as orders\nfrom orders\ngroup by 1\norder by 1","inputQueryString":"select\n  date_trunc('day', created_at) as day,\n  count(*) as orders\nfrom orders\ngroup by 1\norder by 1","compiled":false,"inline":true}]}
